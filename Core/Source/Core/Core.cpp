@@ -1,6 +1,8 @@
 #include "core_pch.h"
 #include "Core.h"
-
+#include "Profiler.h"
+#include <chrono>
+#include <thread>
 namespace Core {
 
 	static Logger* s_Logger;
@@ -23,19 +25,21 @@ namespace Core {
 
 	void Engine::Init()
 	{
+		PROFILE_FUNCTION();
+
 		std::cout << "Engine Initalizing.\n";
 
 		//TODO : Implement Logger to live the duration of the engine
 		auto logger = Logger();
 		s_Logger = &logger;
 		
-		
-		auto result = GetLogger()->Log("Log Test");
+		auto result = GetLogger()->Log(LogMessage("Log Test"));
 		std::cout << result.success << "\n";
 	}
 
 	void Engine::Exit()
 	{
+	
 		std::cout << "Engine Shutdown.\n";
 	}
 
