@@ -4,6 +4,9 @@
 #include <fstream>
 #include <istream>
 #include <chrono>
+#include <ctime>
+
+
 class ProfileTimer;//predefinition
 
 struct ProfileResult {
@@ -56,12 +59,23 @@ private:
 public:
 	
 	std::string GetFilename() {
-		std::string t = "results_";
-		std::string datetime = "0.0.1.23.4.2";
-		t.append(datetime);
-		t.append(".json");
+		
+		//Find time and date
+		auto t = std::time(nullptr);
+		auto tm = *std::localtime(&t);
+		auto pt = std::put_time(&tm, "%d-%m-%Y--%H-%M-%S");
 
-		return t;
+		std::ostringstream oss;
+		oss << pt;
+		auto str = oss.str();
+
+
+		std::string filename = "";
+		filename.append(str);
+		filename.append("_profiling");
+		filename.append(".json");
+
+		return filename;
 	}
 
 	void WriteHeader() {

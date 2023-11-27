@@ -15,3 +15,5 @@ group "Core"
 group ""
 
 include "RADBI/Build-RADBI.lua"
+
+include "Hippo/Build-Hippo.lua"

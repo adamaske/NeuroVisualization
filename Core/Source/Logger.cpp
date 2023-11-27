@@ -6,9 +6,20 @@ Logger::Logger()
 	std::cout << "Logger Created.\n";
 }
 
-LogResult Logger::Log(LogMessage msg)
+void Logger::Log(LogMessage msg)
 {
 	std::cout << "Logger : " << msg.m_msg << "\n";
 
-	return LogResult();
+}
+
+void Logger::Log(std::string msg)
+{
+}
+
+void Logger::WriteHeader()
+{
+}
+
+void Logger::WriteFooter()
+{
 }
